@@ -160,7 +160,7 @@ EventEmitter.prototype.on = (event, callback) ->
 
 EventEmitter.prototype.once = (event, callback) ->
   args = Array::slice.call(arguments)
-  if !util.isFunction(callback)
+  if typeof callback !== 'function'
     throw TypeError('callback must be a function');
   fired = false
   wrap = wrap_callback(callback, 'EventEmitter.once');
